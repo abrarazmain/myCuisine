@@ -5,12 +5,12 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+
   const handleSignOut = () => {
     logOut()
       .then()
       .catch((error) => {
-        console.log(error);
+   
       });
   };
   return (

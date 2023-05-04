@@ -1,33 +1,46 @@
 import React from "react";
+import PdfDocument from "./PdfDocument";
+import { saveAs } from "file-saver";
+import * as ReactDOMServer from "react-dom/server";
 
 const Blog = () => {
+  const pdfString = ReactDOMServer.renderToStaticMarkup(<PdfDocument />);
+  const handleDownload = () => {
+    // Render the PDF component to a string
+    const pdfString = ReactDOMServer.renderToStaticMarkup(<PdfDocument />);
+
+    // Convert the string to a Blob
+    const pdfBlob = new Blob([pdfString], { type: "application/pdf" });
+
+    saveAs(pdfBlob, "my-pdf-file.pdf");
+  };
   return (
     <div>
-      <section class="bg-white dark:bg-purple-400 my-12 rounded">
-        <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <h2 class="mb-8 text-4xl tracking-tight font-extrabold  text-purple-600">
+      <section className="bg-white dark:bg-purple-400 my-12 rounded">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+          <h2 className="mb-8 text-4xl tracking-tight font-extrabold  text-purple-600">
             Frequently asked questions
           </h2>
-          <div class="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2">
+          <div className="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2">
             <div>
-              <div class="mb-10">
-                <h3 class="flex items-center mb-4 text-lg text-purple-700 font-bold ">
+              <div className="mb-10">
+                <h3 className="flex items-center mb-4 text-lg text-purple-700 font-bold ">
                   <svg
-                    class="flex-shrink-0 mr-2 w-5 h-5 text-dark-500 "
+                    className="flex-shrink-0 mr-2 w-5 h-5 text-dark-500 "
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   The differences between uncontrolled and controlled
                   components?
                 </h3>
-                <p class="text-purple-100">
+                <p className="text-purple-100">
                   In React JS, components can also be classified as either
                   controlled or uncontrolled. Controlled components are those
                   that are fully controlled by the application's state, meaning
@@ -46,23 +59,23 @@ const Blog = () => {
                   measures to ensure their stability and consistency. <br />
                 </p>
               </div>
-              <div class="mb-10">
-                <h3 class="flex items-center mb-4 text-lg text-purple-700 font-bold ">
+              <div className="mb-10">
+                <h3 className="flex items-center mb-4 text-lg text-purple-700 font-bold ">
                   <svg
-                    class="flex-shrink-0 mr-2 w-5 h-5 text-dark-500 "
+                    className="flex-shrink-0 mr-2 w-5 h-5 text-dark-500 "
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   How to validate React props using PropTypes?
                 </h3>
-                <p class="text-purple-100">
+                <p className="text-purple-100">
                   To use PropTypes in a component, I first need to import the
                   library at the top of my file. Then, I can define the expected
                   data types and any required props for the component. For
@@ -80,23 +93,23 @@ const Blog = () => {
               </div>
             </div>
             <div>
-              <div class="mb-10">
-                <h3 class="flex items-center mb-4 text-lg  text-purple-700 font-bold">
+              <div className="mb-10">
+                <h3 className="flex items-center mb-4 text-lg  text-purple-700 font-bold">
                   <svg
-                    class="flex-shrink-0 mr-2 w-5 h-5"
+                    className="flex-shrink-0 mr-2 w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   Difference between nodeJS and expressJS?
                 </h3>
-                <p class="text-purple-100">
+                <p className="text-purple-100">
                   Node.js and Express.js are two popular technologies used for
                   building server-side applications using JavaScript. Node.js is
                   a server-side JavaScript runtime environment, while Express.js
@@ -120,23 +133,23 @@ const Blog = () => {
                   expressive API for building web applications.
                 </p>
               </div>
-              <div class="mb-10">
-                <h3 class="flex items-center mb-4 text-lg  text-purple-700 font-bold">
+              <div className="mb-10">
+                <h3 className="flex items-center mb-4 text-lg  text-purple-700 font-bold">
                   <svg
-                    class="flex-shrink-0 mr-2 w-5 h-5"
+                    className="flex-shrink-0 mr-2 w-5 h-5"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   What is a custom hook, and why will I create a custom hook?
                 </h3>
-                <p class="text-purple-100">
+                <p className="text-purple-100">
                   Custom hooks are a feature in React that allow developers to
                   reuse stateful logic across different components in a more
                   elegant and efficient way. A custom hook is essentially a
@@ -144,12 +157,12 @@ const Blog = () => {
                   useState or useEffect) to encapsulate and abstract away
                   complex logic, making it easier to share across different
                   components in a React application. <br /> <br />
-                  There are several reasons why I might want to create a
-                  custom hook. One common reason is to reduce code duplication
-                  and improve the maintainability of my application. By
-                  encapsulating complex logic in a custom hook, I can reuse
-                  the same code across multiple components, rather than having
-                  to copy and paste the same code in different places. This can
+                  There are several reasons why I might want to create a custom
+                  hook. One common reason is to reduce code duplication and
+                  improve the maintainability of my application. By
+                  encapsulating complex logic in a custom hook, I can reuse the
+                  same code across multiple components, rather than having to
+                  copy and paste the same code in different places. This can
                   help keep my code DRY (Don't Repeat Yourself), and make it
                   easier to modify and update my code in the future. <br />
                   <br />
@@ -165,6 +178,9 @@ const Blog = () => {
           </div>
         </div>
       </section>
+      <button className="btn btn-primary" onClick={handleDownload}>
+        Download as PDF
+      </button>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const ChefCard = ({ chef }) => {
     likes,
     
     } = chef;
-    console.log(id);
+   
   return (
     <div>
       <div className="card card-compact lg:w-96 bg-base-100 shadow-xl my-3">

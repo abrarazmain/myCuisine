@@ -40,7 +40,7 @@ const Login = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+       
       });
   };
   const handleGithubLogin = () => {
@@ -51,7 +51,7 @@ const Login = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+     
       });
   };
 
@@ -99,8 +99,8 @@ const Login = () => {
             </div>
 
             <label
-              class=" rounded px-2 py-1 text-sm text-purple-700 font-mono cursor-pointer js-password-label"
-              for="toggle"
+              className=" rounded px-2 py-1 text-sm text-purple-700 font-mono cursor-pointer js-password-label"
+              htmlFor="toggle"
               onClick={() => setToggle(!toggle)}
             >
               {toggle ? "hide password" : "Show Password"}

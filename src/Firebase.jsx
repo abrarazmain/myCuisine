@@ -3,18 +3,17 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Your web app's Firebase env
 const firebaseConfig = {
-  apiKey: "AIzaSyDFhtCuqa1_MdbNm-aA_ZAkTCHeVS-tM0k",
-  authDomain: "mycuisine-31e7d.firebaseapp.com",
-  projectId: "mycuisine-31e7d",
-  storageBucket: "mycuisine-31e7d.appspot.com",
-  messagingSenderId: "147688405230",
-  appId: "1:147688405230:web:2f778f9dc3773cbf829bff"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
-export default app
+export default app;

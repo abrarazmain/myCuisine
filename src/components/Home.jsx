@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefCard from "./ChefCard";
 
 const Home = () => {
   const chefs = useLoaderData();
-  console.log(chefs);
+
   return (
     <>
       <div

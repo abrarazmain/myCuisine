@@ -12,12 +12,13 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    ErrorBoundary: <ErrorPage></ErrorPage>,
+    ErrorPage: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/chefs"),
+        loader: () =>
+          fetch("https://assignment-10-server-tan.vercel.app/chefs"),
       },
       {
         path: "chefs/:id",
@@ -26,7 +27,8 @@ const router = createBrowserRouter([
             <ChefDetails></ChefDetails>
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params}`),
+        loader: ({ params }) =>
+          fetch(`https://assignment-10-server-tan.vercel.app/chefs/${params}`),
       },
 
       {
