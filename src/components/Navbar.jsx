@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
+import "react-tooltip/dist/react-tooltip.css";
+
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
   const handleSignOut = () => {
     logOut()
       .then()
-      .catch(error => {
-      console.log(error);
-    })
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <div className="navbar  bg-purple-400 text-white">
@@ -47,24 +47,42 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost normal-case text-xl">MyCuisine</Link>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
+            MyCuisine
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
             </li>
 
             <li>
-              <Link to='/blog'>Blog</Link>
+              <Link to="/blog">Blog</Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-        {user && <div className="w-10 rounded mr-4">
-          <img  title={user.displayName} src={user.photoURL} />
-        </div>}
-          {user ? <Link  onClick={handleSignOut} className="btn bg-purple-600 border-none">Logout</Link> : <Link to='/login' className="btn bg-purple-600 border-none">Login</Link>}
+          {user && (
+            <div className="w-10 rounded mr-4 group relative  flex justify-center">
+              <img src={user.photoURL} />
+              <span class="absolute top-10 scale-0 rounded bg-gray-800 p-4 text-xs text-white group-hover:scale-100">
+                {user.displayName}{" "}
+              </span>
+            </div>
+          )}
+          {user ? (
+            <Link
+              onClick={handleSignOut}
+              className="btn btn-primary border-none"
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link to="/login" className="btn btn-primary border-none">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>
