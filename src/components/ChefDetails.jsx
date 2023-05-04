@@ -25,10 +25,10 @@ const ChefDetails = () => {
         style={{
           height: "500px",
         }}
-        className="hero  bg-purple-200 my-12"
+        className="hero  bg-purple-200 my-12 text-purple-600"
       >
         <div className="hero-content flex-col lg:flex-row">
-          <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl" />
+          <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl mx-4" />
           <div>
             <h1 className="text-5xl font-bold">{chefName}</h1>
             <p className="py-2 font-bold">Short Description: {bio}</p>
