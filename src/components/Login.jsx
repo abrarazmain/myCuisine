@@ -7,11 +7,7 @@ const Login = () => {
   const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const [password, setPassword] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
+  const [error,setError]=useState('')
 
   const from = location.state?.from?.pathname || "/";
 
@@ -28,7 +24,11 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error);
+        const errorMessage = error.message;
+        if (errorMessage == 'Firebase: Error (auth/user-not-found).') {
+          setError('Wrong Email or password.Please Try Again')
+        }
+       
       });
   };
 
@@ -55,31 +55,7 @@ const Login = () => {
       });
   };
 
-  const handleEmail = (e) => {
-    const emailInput = e.target.value;
-    setEmail(emailInput);
-    if (
-      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        emailInput
-      )
-    ) {
-      setEmailError("Please provide a valid email");
-    } else {
-      setEmailError("");
-    }
-  };
-
-  const handlePassword = (e) => {
-    const passwordInput = e.target.value;
-    setPassword(passwordInput);
-    if (passwordInput.length < 6) {
-      setPasswordError("Password must be at least 6 characters long");
-    } else if (!/.+[A-Z].+/.test(passwordInput)) {
-      setPasswordError("Password must contain at least one capital letter");
-    } else {
-      setPasswordError("");
-    }
-  };
+  
 
   return (
     <div>
@@ -88,6 +64,7 @@ const Login = () => {
           <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">
             Please Login
           </h1>
+         <div className="text-center"> {error && <span className="error">{error}</span>}</div>
           <form onSubmit={handleLogin} className="mt-6">
             <div className="mb-2">
               <label
@@ -96,11 +73,10 @@ const Login = () => {
               >
                 Email
               </label>
-              {emailError && <span className="error">{emailError}</span>}
+             
               <input
-                onChange={handleEmail}
                 type="email"
-                value={email}
+                
                 name="email"
                 className="block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
@@ -112,11 +88,10 @@ const Login = () => {
               >
                 Password
               </label>
-              {passwordError && <span className="error">{passwordError}</span>}
+            
               <input
                 required
-                value={password}
-                onChange={handlePassword}
+        
                 type={toggle ? "text" : "password"}
                 name="password"
                 className="block w-full px-4 py-2 mt-2 0 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
