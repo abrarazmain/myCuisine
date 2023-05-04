@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import "react-tooltip/dist/react-tooltip.css";
-
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -39,26 +38,28 @@ const Navbar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link>Home</Link>
+                <NavLink>Home</NavLink>
               </li>
 
               <li>
-                <Link>Blog</Link>
+                <NavLink>Blog</NavLink>
               </li>
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <NavLink to="/" className="btn btn-ghost normal-case text-xl">
             MyCuisine
-          </Link>
+          </NavLink>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to="/">Home</Link>
+              <NavLink className="mr-3" to="/">
+                Home
+              </NavLink>
             </li>
 
             <li>
-              <Link to="/blog">Blog</Link>
+              <NavLink to="/blog">Blog</NavLink>
             </li>
           </ul>
         </div>
@@ -72,16 +73,16 @@ const Navbar = () => {
             </div>
           )}
           {user ? (
-            <Link
+            <NavLink
               onClick={handleSignOut}
               className="btn btn-primary border-none"
             >
               Logout
-            </Link>
+            </NavLink>
           ) : (
-            <Link to="/login" className="btn btn-primary border-none">
+            <NavLink to="/login" className="btn btn-primary border-none">
               Login
-            </Link>
+            </NavLink>
           )}
         </div>
       </div>

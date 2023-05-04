@@ -14,7 +14,7 @@ const ChefCard = ({ chef }) => {
     console.log(id);
   return (
     <div>
-      <div className="card card-compact w-96 bg-base-100 shadow-xl my-3">
+      <div className="card card-compact lg:w-96 bg-base-100 shadow-xl my-3">
         <figure>
           <img className="h-80 w-auto rounded" src={chefPicture} alt="Shoes" />
         </figure>
