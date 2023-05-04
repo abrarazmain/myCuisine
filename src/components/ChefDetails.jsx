@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
+import { ToastContainer, toast } from "react-toastify";
 
 const ChefDetails = () => {
   const [chef, setChef] = useState([]);
-  const [recipe, setRecipe] = useState([]);
+
   const { id } = useParams();
   useEffect(() => {
     fetch(`http://localhost:5000/chefs/${id}`)
@@ -47,7 +48,7 @@ const ChefDetails = () => {
           </div>
         </div>
       </div>
-     <div>
+      <div>
         {recipes &&
           recipes.map((recipe) => (
             <RecipeCard key={recipe.id} recipe={recipe}></RecipeCard>
