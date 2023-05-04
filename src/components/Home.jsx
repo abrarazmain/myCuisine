@@ -8,19 +8,23 @@ const Home = () => {
   return (
     <>
       <div
-        className="hero"
+        className="hero rounded"
         style={{
           backgroundImage: `url("https://png.pngtree.com/background/20210711/original/pngtree-food-seasoning-food-banner-picture-image_1105676.jpg")`,
-          height:'700px'
+          height: "700px",
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Welcome To <span className="text-purple-600">MyCuisine</span></h1>
+            <h1 className="mb-5 text-5xl font-bold">
+              Welcome To <span className="text-purple-600">MyCuisine</span>
+            </h1>
             <p className="mb-5">
-              
-MyCuisine is a Thai recipe website that celebrates the unique flavors and aromas of Thai cuisine. Our website offers a vast collection of authentic Thai recipes that are easy to follow and recreate in your home kitchen.
+              MyCuisine is a Thai recipe website that celebrates the unique
+              flavors and aromas of Thai cuisine. Our website offers a vast
+              collection of authentic Thai recipes that are easy to follow and
+              recreate in your home kitchen.
             </p>
             <button className="btn btn-primary">Get Started</button>
           </div>
