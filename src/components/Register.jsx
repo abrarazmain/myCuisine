@@ -1,23 +1,33 @@
 import React, { useContext } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import { getAuth, updateProfile } from "firebase/auth";
+import app from "../Firebase";
 
 const Register = () => {
+  const auth = getAuth(app);
   const navigate = useNavigate();
-const {createUser}=useContext(AuthContext)
+  const { createUser } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
 
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
 
     createUser(email, password)
       .then((userCredential) => {
         const createdUser = userCredential.user;
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then((user) => {console.log(user);})
+          .catch((error) => {});
         console.log(createdUser);
-        navigate('/login', { replace: true });
+        navigate("/login", { replace: true });
       })
       .catch((error) => {
         const errorMessage = error.message;

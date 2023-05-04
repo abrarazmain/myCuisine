@@ -7,6 +7,11 @@ const Login = () => {
   const [toggle, setToggle] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
 
   const from = location.state?.from?.pathname || "/";
 
@@ -49,6 +54,33 @@ const Login = () => {
         console.log(errorMessage);
       });
   };
+
+  const handleEmail = (e) => {
+    const emailInput = e.target.value;
+    setEmail(emailInput);
+    if (
+      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        emailInput
+      )
+    ) {
+      setEmailError("Please provide a valid email");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handlePassword = (e) => {
+    const passwordInput = e.target.value;
+    setPassword(passwordInput);
+    if (passwordInput.length < 6) {
+      setPasswordError("Password must be at least 6 characters long");
+    } else if (!/.+[A-Z].+/.test(passwordInput)) {
+      setPasswordError("Password must contain at least one capital letter");
+    } else {
+      setPasswordError("");
+    }
+  };
+
   return (
     <div>
       <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
@@ -64,8 +96,11 @@ const Login = () => {
               >
                 Email
               </label>
+              {emailError && <span className="error">{emailError}</span>}
               <input
+                onChange={handleEmail}
                 type="email"
+                value={email}
                 name="email"
                 className="block w-full px-4 py-2 mt-2  bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
@@ -77,7 +112,11 @@ const Login = () => {
               >
                 Password
               </label>
+              {passwordError && <span className="error">{passwordError}</span>}
               <input
+                required
+                value={password}
+                onChange={handlePassword}
                 type={toggle ? "text" : "password"}
                 name="password"
                 className="block w-full px-4 py-2 mt-2 0 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
@@ -89,7 +128,7 @@ const Login = () => {
               for="toggle"
               onClick={() => setToggle(!toggle)}
             >
-              {toggle ? 'hide password': 'Show Password'}
+              {toggle ? "hide password" : "Show Password"}
             </label>
             <div className="mt-6">
               <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">

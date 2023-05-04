@@ -5,6 +5,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   const handleSignOut = () => {
     logOut()
       .then()
@@ -67,7 +68,7 @@ const Navbar = () => {
           {user && (
             <div className="w-10 rounded mr-4 group relative  flex justify-center">
               <img src={user.photoURL} />
-              <span class="absolute top-10 scale-0 rounded bg-gray-800 p-4 text-xs text-white group-hover:scale-100">
+              <span className="absolute top-10 scale-0 rounded bg-gray-800 p-4 text-xs text-white group-hover:scale-100">
                 {user.displayName}{" "}
               </span>
             </div>
