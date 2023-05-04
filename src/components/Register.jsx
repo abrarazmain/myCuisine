@@ -26,7 +26,7 @@ const {createUser}=useContext(AuthContext)
   };
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
-      {/* <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
+      <div className="w-full p-6 m-auto bg-white rounded-md shadow-xl lg:max-w-xl">
         <h1 className="text-3xl font-semibold text-center text-purple-700 uppercase">
           Please Register
         </h1>
@@ -101,7 +101,7 @@ const {createUser}=useContext(AuthContext)
             </button>
           </div>
         </form>
-      </div> */}
+      </div>
     </div>
   );
 };
