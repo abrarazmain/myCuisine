@@ -9,7 +9,7 @@ const ChefCard = ({ chef }) => {
     yearsOfExperience,
     numberOfRecipes,
     likes,
-    className = "text-2xl",
+    
     } = chef;
     console.log(id);
   return (
