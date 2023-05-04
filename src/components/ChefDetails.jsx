@@ -8,31 +8,41 @@ const ChefDetails = () => {
     fetch(`http://localhost:5000/chefs/${id}`)
       .then((res) => res.json())
       .then((data) => setChef(data));
-  },[]);
-  const { chefPicture, chefName, yearsOfExperience, numberOfRecipes, likes,recipes } =
-        chef;
-    console.log(recipes);
+  }, []);
+  const {
+    chefPicture,
+    chefName,
+    yearsOfExperience,
+    numberOfRecipes,
+    likes,
+    recipes,
+    bio,
+  } = chef;
+  console.log(recipes);
   return (
     <div>
-          <div style={{
-          height:'500px'
-      }} className="hero  bg-base-200">
+      <div
+        style={{
+          height: "500px",
+        }}
+        className="hero  bg-purple-200 my-12"
+      >
         <div className="hero-content flex-col lg:flex-row">
-          <img
-            src={chefPicture}
-            className="max-w-sm rounded-lg shadow-2xl"
-          />
+          <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl" />
           <div>
-                      <h1 className="text-5xl font-bold">{ chefName}</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+            <h1 className="text-5xl font-bold">{chefName}</h1>
+            <p className="py-2 font-bold">Short Description: {bio}</p>
+            <p className="py-2 font-bold">
+              Number of recipes: {numberOfRecipes}
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <p className="py-2 font-bold">Liked: {likes}</p>
+            <p className="py-2 font-bold">
+              Year of Experience: {yearsOfExperience}
+            </p>
           </div>
         </div>
-      </div>
+          </div>
+          
     </div>
   );
 };
