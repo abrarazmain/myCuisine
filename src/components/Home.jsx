@@ -1,6 +1,8 @@
-import React  from "react";
+import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ChefCard from "./ChefCard";
+import ContuctUs from "./ContuctUs";
+import Founders from "./Founders";
 
 const Home = () => {
   const chefs = useLoaderData();
@@ -8,7 +10,7 @@ const Home = () => {
   return (
     <>
       <div
-        className="hero rounded"
+        className="hero rounded mb-36"
         style={{
           backgroundImage: `url("https://png.pngtree.com/background/20210711/original/pngtree-food-seasoning-food-banner-picture-image_1105676.jpg")`,
           height: "700px",
@@ -30,7 +32,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-5xl font-semibold text-center text-purple-700 uppercase my-3">
+      <h1 className="text-5xl font-semibold text-center  uppercase my-3">
         Our Chefs
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 mx-auto my-12 mx-auto">
@@ -38,6 +40,9 @@ const Home = () => {
           <ChefCard key={chef.id} chef={chef}></ChefCard>
         ))}
       </div>
+      <Founders></Founders>
+
+      <ContuctUs></ContuctUs>
     </>
   );
 };
